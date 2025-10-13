@@ -1,9 +1,9 @@
 class AptLocal < Formula
   desc "A thin wrapper around k3d for managing a local k8s cluster"
   homepage "https://github.com/aptvantage/apt-local"
-  version "0.1.2"
+  version "0.1.3"
   url "https://github.com/aptvantage/apt-local/archive/refs/tags/#{version}.tar.gz"
-  sha256 "f89d9e26d7453d36128d0710911295fe3f723760b87280817a13ab3899c05044" # Homebrew computes this from the tarball
+  sha256 "6fb59966379721121d5192be9beccecc5ad9611abeea6c10e7fdb87198d787c8" # Homebrew computes this from the tarball
 
   # Explicitly depend on k3d
   depends_on "k3d" => :recommended
