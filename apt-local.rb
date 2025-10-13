@@ -11,6 +11,9 @@ class AptLocal < Formula
   # Explicitly depend mkcert
   depends_on "mkcert" => :recommended
 
+  # Explicity depends on jq
+  depends_on "jq" => :recommended
+
   def install
     bin.install "apt-local"
   end
