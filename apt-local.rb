@@ -1,9 +1,9 @@
 class AptLocal < Formula
   desc "A thin wrapper around k3d for managing a local k8s cluster"
   homepage "https://github.com/aptvantage/apt-local"
-  version "0.1.3"
+  version "0.1.4"
   url "https://github.com/aptvantage/apt-local/archive/refs/tags/#{version}.tar.gz"
-  sha256 "6fb59966379721121d5192be9beccecc5ad9611abeea6c10e7fdb87198d787c8" # Homebrew computes this from the tarball
+  sha256 "8457a76c57aec54e20e35f2f55bb27cd085f97d130dcee31b360469db465f8c2" # Homebrew computes this from the tarball
 
   # Explicitly depend on k3d
   depends_on "k3d" => :recommended
@@ -16,13 +16,14 @@ class AptLocal < Formula
 
   def install
     bin.install "apt-local"
+    (prefix/"etc").mkpath
+    (prefix/"etc").install Dir["etc/*"]
+    inreplace bin/"apt-local", "CONFIG_DIR=../etc", "CONFIG_DIR=#{prefix}/etc"
   end
 
   def caveats
     <<~EOS
-      To use apt-local, ensure k3d and mkcert are installed and ready:
-        brew install k3d mkcert
-
+      You may need to open a new terminal window for apt-local to be on your PATH.
       Then try: apt-local create
     EOS
   end
