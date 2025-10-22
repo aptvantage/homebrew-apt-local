@@ -15,7 +15,7 @@ class AptLocal < Formula
   depends_on "jq" => :recommended
 
   def install
-    bin.install "apt-local"
+    bin.install "bin/apt-local"
     (prefix/"etc").mkpath
     (prefix/"etc").install Dir["etc/*"]
     inreplace bin/"apt-local", "CONFIG_DIR=../etc", "CONFIG_DIR=#{prefix}/etc"
